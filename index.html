@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>K Appps</title>
+    </head>
+    <body>
+        <div class="app">
+            <h1>K Appps</h1>
+            <br>
+			<button  onclick="myFun();">Mybutton</button><br>
+			 <button  onclick="getPhotoNative_uri();">Mycam</button><br />
+
+        </div>
+        <script type="text/javascript">
+            function myFun()
+			{
+				alert('kalpesh');
+			}
+			function getPhotoNative_uri() 
+			{
+            navigator.camera.getPicture(onSuccess, onFail, {
+                quality: 50,
+                destinationType: Camera.DestinationType.NATIVE_URI
+            });
+           }
+        </script>
+    </body>
+</html>
