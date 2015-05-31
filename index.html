@@ -8,25 +8,41 @@
     <script src="js/photo-gallery.js"></script>
     <script>
         function CamPic() {
-            navigator.camera.getPicture(onSuccess, onFail, {
-                quality: 75,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-                popoverOptions: CameraPopoverOptions
+            try {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 75,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                    popoverOptions: CameraPopoverOptions
 
-            });
+                });
+                function onSuccess(imageURI) {
+                    var image = document.getElementById('myImage');
+                    image.src = imageURI;
+
+                }
+            }
+            catch (e) {
+                alert(e);
+            }
         }
         function filePic() {
-            navigator.camera.getPicture(onSuccess, onFail, {
-                quality: 75,
-                destinationType: Camera.DestinationType.FILE_URI,
-                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                encodingType: Camera.EncodingType.JPEG,
-                targetWidth: 100,
-                targetHeight: 100,
-                popoverOptions: CameraPopoverOptions,
-                saveToPhotoAlbum: false
-            });
+            try
+                {
+                    navigator.camera.getPicture(onSuccess, onFail, {
+                        quality: 75,
+                        destinationType: Camera.DestinationType.FILE_URI,
+                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                        encodingType: Camera.EncodingType.JPEG,
+                        targetWidth: 100,
+                        targetHeight: 100,
+                        popoverOptions: CameraPopoverOptions,
+                        saveToPhotoAlbum: false
+                    });
+                }
+                catch (e) {
+                    alert(e);
+                }
 
         }
         function onSuccess(imageURI) {
