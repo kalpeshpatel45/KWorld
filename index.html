@@ -53,7 +53,8 @@
         function onFail(message) {
             alert('Failed because: ' + message);
         }
-         function takePicture () {
+        function takePicture() {
+   try{
             navigator.camera.getPicture(function (imageURI) {
                 alert(imageURI);
             },
@@ -64,6 +65,7 @@
           quality: 50,
           destinationType: Camera.DestinationType.FILE_URI
       });
+      }catch(e){alert(e);}
         }
     </script>
   </head>
