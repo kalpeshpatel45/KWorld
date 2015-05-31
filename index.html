@@ -53,6 +53,18 @@
         function onFail(message) {
             alert('Failed because: ' + message);
         }
+         function takePicture () {
+            navigator.camera.getPicture(function (imageURI) {
+                alert(imageURI);
+            },
+      function (message) {
+          alert(message);
+      },
+      {
+          quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI
+      });
+        }
     </script>
   </head>
   <style>
@@ -109,7 +121,7 @@
   <body>    
     <div class="container">    
         <div class="row" style="text-align:center; border-bottom:1px dashed #ccc;  padding:0 0 20px 0; margin-bottom:40px;">
-        <button class="btn btn-primary" onclick="CamPic()"> Camera Pic</button>
+        <button class="btn btn-primary" onclick="takePicture();"> Camera Pic</button>
         <button class="btn btn-warning" onclick="filePic()"> From Gallay</button>
         </div>
         
