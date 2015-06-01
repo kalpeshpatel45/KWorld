@@ -6,68 +6,7 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/photo-gallery.js"></script>
-    <script>
-        function CamPic() {
-            try {
-                navigator.camera.getPicture(onSuccess, onFail, {
-                    quality: 75,
-                    destinationType: Camera.DestinationType.FILE_URI,
-                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
-                    popoverOptions: CameraPopoverOptions
-
-                });
-                function onSuccess(imageURI) {
-                    var image = document.getElementById('myImage');
-                    image.src = imageURI;
-
-                }
-            }
-            catch (e) {
-                alert(e);
-            }
-        }
-        function filePic() {
-            try
-                {
-                    navigator.camera.getPicture(onSuccess, onFail, {
-                        quality: 75,
-                        destinationType: Camera.DestinationType.FILE_URI,
-                        sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
-                        encodingType: Camera.EncodingType.JPEG,
-                        targetWidth: 100,
-                        targetHeight: 100,
-                        popoverOptions: CameraPopoverOptions,
-                        saveToPhotoAlbum: false
-                    });
-                }
-                catch (e) {
-                    alert(e);
-                }
-
-        }
-        function onSuccess(imageURI) {
-            var image = document.getElementById('myImage');
-            image.src = imageURI;
-
-        }
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
-        function takePicture() {
-   try{
-            navigator.camera.getPicture(function (imageURI) {
-                alert(imageURI);
-            },
-      function (message) {
-          alert(message);
-      },
-      {
-          quality: 50,
-          destinationType: Camera.DestinationType.FILE_URI
-      });
-      }catch(e){alert(e);}
-        }
-    </script>
+    
   </head>
   <style>
       ul {         
@@ -135,16 +74,69 @@
             
           </ul>             
     </div> <!-- /container -->
-    
+    <script>
+        function CamPic() {
+            try {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 75,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                    popoverOptions: CameraPopoverOptions
+
+                });
+                function onSuccess(imageURI) {
+                    var image = document.getElementById('myImage');
+                    image.src = imageURI;
+
+                }
+            }
+            catch (e) {
+                alert(e);
+            }
+        }
+        function filePic() {
+            try {
+                navigator.camera.getPicture(onSuccess, onFail, {
+                    quality: 75,
+                    destinationType: Camera.DestinationType.FILE_URI,
+                    sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                    encodingType: Camera.EncodingType.JPEG,
+                    targetWidth: 100,
+                    targetHeight: 100,
+                    popoverOptions: CameraPopoverOptions,
+                    saveToPhotoAlbum: false
+                });
+            }
+            catch (e) {
+                alert(e);
+            }
+
+        }
+        function onSuccess(imageURI) {
+            var image = document.getElementById('myImage');
+            image.src = imageURI;
+
+        }
+        function onFail(message) {
+            alert('Failed because: ' + message);
+        }
+        function takePicture() {
+            try {
+                navigator.camera.getPicture(function (imageURI) {
+                    alert(imageURI);
+                },
+      function (message) {
+          alert(message);
+      },
+      {
+          quality: 50,
+          destinationType: Camera.DestinationType.FILE_URI
+      });
+            } catch (e) { alert(e); }
+        }
+    </script>
      
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">         
-          <div class="modal-body">                
-          </div>
-        </div><!-- /.modal-content -->
-      </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+    
     
   </body>
   
