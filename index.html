@@ -89,14 +89,14 @@
             try {
                 navigator.camera.getPicture
                 (
-                    function (imageURI) 
-                    {
+                    function (imageURI) {
+                        alert('sssssss');
                         alert(imageURI);
                         var image = document.getElementById('myImage');
                         image.src = imageURI;
                     },
                     onFail,
-                    { 
+                    {
                         quality: 50,
                         destinationType: Camera.DestinationType.DATA_URL
                     }
