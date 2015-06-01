@@ -87,14 +87,13 @@
 
         function CamPic() {
             try {
-                navigator.camera.getPicture(onSuccess, onFail, {
-                    quality: 75,
-                    destinationType: Camera.DestinationType.NATIVE_URI,
-                    sourceType: Camera.PictureSourceType.CAMERA,
-                    encodingType: Camera.EncodingType.JPEG,
-                    targetWidth: 20,
-                    targetHeight: 20,
-                    saveToPhotoAlbum: true
+                navigator.camera.getPicture(function (imageURI) {
+                    alert('d');
+                    alert(imageURI);
+                    var image = document.getElementById('myImage');
+                    image.src = imageURI;
+                }, onFail, 
+                {saveToPhotoAlbum: true
                 });
             }
             catch (e) {
