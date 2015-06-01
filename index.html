@@ -6,64 +6,15 @@
     <script src="js/jquery.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/photo-gallery.js"></script>
-    
+    <script type="text/javascript" src="cordova.js"></script>
   </head>
-  <style>
-      ul {         
-          padding:0 0 0 0;
-          margin:0 0 0 0;
-      }
-      ul li {     
-          list-style:none;
-          margin-bottom:25px;           
-      }
-      ul li img {
-          cursor: pointer;
-      }
-      .modal-body {
-          padding:5px !important;
-      }
-      .modal-content {
-          border-radius:0;
-      }
-      .modal-dialog img {
-          text-align:center;
-          margin:0 auto;
-      }
-    .controls{          
-        width:50px;
-        display:block;
-        font-size:11px;
-        padding-top:8px;
-        font-weight:bold;          
-    }
-    .next {
-        float:right;
-        text-align:right;
-    }
-      /*override modal for demo only*/
-      .modal-dialog {
-          max-width:500px;
-          padding-top: 90px;
-      }
-      @media screen and (min-width: 768px){
-          .modal-dialog {
-              width:500px;
-              padding-top: 90px;
-          }          
-      }
-      @media screen and (max-width:1500px){
-          #ads {
-              display:none;
-          }
-      }
-  </style>
-  
-  <body>    
+  <body>
+      
     <div class="container">    
         <div class="row" style="text-align:center; border-bottom:1px dashed #ccc;  padding:0 0 20px 0; margin-bottom:40px;">
         <button class="btn btn-primary" onclick="takePicture();"> Camera Pic</button>
-        <button class="btn btn-warning" onclick="filePic()"> From Gallay</button>
+        <button class="btn btn-warning" onclick="filePic();"> From Gallay</button>
+        <button class="btn btn-warning" onclick="ShowgallayImage();"> From Imgpicker</button>
         </div>
         
         <ul class="row">
@@ -75,6 +26,36 @@
           </ul>             
     </div> <!-- /container -->
     <script>
+        function ShowgallayImage() {
+        try{
+            window.imagePicker.getPictures(
+                            function (results) {
+                                for (var i = 0; i < results.length; i++) {
+                                    console.log('Image URI: ' + results[i]);
+                                    navigator.notification.alert(
+                                     'Image URI: ' + results[i],  // message
+                                     alertDismissed,         // callback
+                                     'SucessFully Upload',            // title
+                                     'Done'                  // buttonName
+                                 );
+                                    document.getElementById('Testimg').src = results[i];
+
+                                }
+                            }, function (error) {
+                                console.log('Error: ' + error);
+                                navigator.notification.alert(
+                                   'Error: ' + error,  // message
+                                    alertDismissed,         // callback
+                                    'Error Upload',            // title
+                                    'Done'                  // buttonName
+                                );
+                            }
+                            );
+                        }
+                        catch (e) {
+                            alert(e);
+                        }
+        }
         function CamPic() {
             try {
                 navigator.camera.getPicture(onSuccess, onFail, {
