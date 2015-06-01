@@ -27,51 +27,17 @@
     </div>
     <!-- /container -->
     <script>
-        function ShowgallayImage() {
-            try {
-                window.imagePicker.getPictures(
-                            function (results) {
-                                for (var i = 0; i < results.length; i++) {
-                                    console.log('Image URI: ' + results[i]);
-                                    navigator.notification.alert(
-                                     'Image URI: ' + results[i],  // message
-                                     alertDismissed,         // callback
-                                     'SucessFully Upload',            // title
-                                     'Done'                  // buttonName
-                                 );
-                                    document.getElementById('Testimg').src = results[i];
-
-                                }
-                            }, function (error) {
-                                console.log('Error: ' + error);
-                                navigator.notification.alert(
-                                   'Error: ' + error,  // message
-                                    alertDismissed,         // callback
-                                    'Error Upload',            // title
-                                    'Done'                  // buttonName
-                                );
-                            }
-                            );
-            }
-            catch (e) {
-                alert(e);
-            }
-        }
+        
         function CamPic() {
             try {
                 navigator.camera.getPicture(onSuccess, onFail, {
                     quality: 75,
                     destinationType: Camera.DestinationType.FILE_URI,
-                    sourceType: Camera.PictureSourceType.SAVEDPHOTOALBUM,
+                    
                     popoverOptions: CameraPopoverOptions
 
                 });
-                function onSuccess(imageURI) {
-                    alert(imageURI);
-                    var image = document.getElementById('myImage');
-                    image.src = imageURI;
-
-                }
+                
             }
             catch (e) {
                 alert(e);
@@ -104,20 +70,7 @@
         function onFail(message) {
             alert('Failed because: ' + message);
         }
-        function takePicture() {
-            try {
-                navigator.camera.getPicture(function (imageURI) {
-                    alert(imageURI);
-                },
-      function (message) {
-          alert(message);
-      },
-      {
-          quality: 50,
-          destinationType: Camera.DestinationType.FILE_URI
-      });
-            } catch (e) { alert(e); }
-        }
+        
     </script>
 </body>
 </html>
