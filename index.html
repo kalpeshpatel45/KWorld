@@ -89,11 +89,11 @@
             try {
                 navigator.camera.getPicture
                 (
-                    function () 
+                    function (imageURI) 
                     {
-                        alert('sss');
+                        alert(imageURI);
                         var image = document.getElementById('myImage');
-                        image.src = "data:image/jpeg;base64," + imageData;
+                        image.src = imageURI;
                     },
                     onFail,
                     { 
