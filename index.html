@@ -89,10 +89,11 @@
             try {
                 navigator.camera.getPicture(onSuccess, onFail, {
                     quality: 75,
-                    destinationType: Camera.DestinationType.FILE_URI,
+                    destinationType: Camera.DestinationType.NATIVE_URI,
                     sourceType: Camera.PictureSourceType.CAMERA,
                     encodingType: Camera.EncodingType.JPEG,
-                    popoverOptions: CameraPopoverOptions,
+                    targetWidth: 20,
+                    targetHeight: 20,
                     saveToPhotoAlbum: true
                 });
             }
